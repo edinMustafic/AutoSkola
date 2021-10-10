@@ -1,0 +1,35 @@
+AUTO SKOLA TABELE ZA BAZU PODATAKA
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+											KANDIDAT
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   JMBG   							Ako je vrijednost polja broj ljekarskog/potvrde o propisima/prve pomoci/voznje NULL znaci da kandidat nije obavio te radnje
+   IME   
+   IME OCA   
+   PREZIME   
+   DATUM RODJENJA   
+   MJESTO RODJENJA   
+   MJESTO STANOVANJA   
+   ADRESA      
+   KATEGORIJA
+   BROJ LICNE KARTE   
+   BROJ KNJIZICE KANDIDATA  
+   BROJ LJEKARSKOG UVJERENJA
+   USTANOVA KOJA JE IZDALA LJEKARSKO
+   DATUM IZDAVANJA LJEKARSKOG
+   BROJ POTVRDE O PROPISIMA
+   DATUM IZDAVANJA POTVRDE O PROPISIMA
+   POTVRDA O PRVOJ POMOCI
+   DATUM IZDAVANJA POTVRDE O PRVOJ POMOCI
+   POTVRDA O VOZNJI
+   DATUM IZDAVANJA POTVRDE O VOZNJI
+   BROJ IZLAZAKA NA PROPISE
+   BROJ IZLAZAKA NA PRVU POMOC
+   BROJ IZLAZAKA NA VOZNJU
+   BROJ TELEFONA
+   GRUPA ZA TEORETSKU NASTAVU
+   ODSLUSANIH CASOVA VOZNJE
+   TREBA PLATITI
+   DO SAD PLATIO
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
