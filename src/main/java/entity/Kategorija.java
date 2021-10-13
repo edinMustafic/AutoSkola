@@ -74,9 +74,7 @@ public class Kategorija {
         if (brojCasovaTeorija != that.brojCasovaTeorija) return false;
         if (Double.compare(that.cijenaCasaTeorija, cijenaCasaTeorija) != 0) return false;
         if (brojCasovaVoznja != that.brojCasovaVoznja) return false;
-        if (Double.compare(that.cijenaCasaVoznja, cijenaCasaVoznja) != 0) return false;
-
-        return true;
+        return Double.compare(that.cijenaCasaVoznja, cijenaCasaVoznja) == 0;
     }
 
     @Override

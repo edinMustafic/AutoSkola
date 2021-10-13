@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class DodatniTroskovi {
@@ -50,9 +51,7 @@ public class DodatniTroskovi {
 
         if (id != that.id) return false;
         if (Double.compare(that.iznos, iznos) != 0) return false;
-        if (naziv != null ? !naziv.equals(that.naziv) : that.naziv != null) return false;
-
-        return true;
+        return Objects.equals(naziv, that.naziv);
     }
 
     @Override

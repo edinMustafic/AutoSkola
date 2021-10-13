@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Admin {
@@ -37,10 +38,8 @@ public class Admin {
 
         Admin admin = (Admin) o;
 
-        if (username != null ? !username.equals(admin.username) : admin.username != null) return false;
-        if (password != null ? !password.equals(admin.password) : admin.password != null) return false;
-
-        return true;
+        if (!Objects.equals(username, admin.username)) return false;
+        return Objects.equals(password, admin.password);
     }
 
     @Override

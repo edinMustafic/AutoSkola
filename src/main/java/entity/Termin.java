@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
 public class Termin {
@@ -107,16 +108,14 @@ public class Termin {
         if (id != termin.id) return false;
         if (tip != termin.tip) return false;
         if (prevoz != termin.prevoz) return false;
-        if (kanidatJmbg != null ? !kanidatJmbg.equals(termin.kanidatJmbg) : termin.kanidatJmbg != null) return false;
-        if (instruktorJmbg != null ? !instruktorJmbg.equals(termin.instruktorJmbg) : termin.instruktorJmbg != null)
+        if (!Objects.equals(kanidatJmbg, termin.kanidatJmbg)) return false;
+        if (!Objects.equals(instruktorJmbg, termin.instruktorJmbg))
             return false;
-        if (vrijemePocetka != null ? !vrijemePocetka.equals(termin.vrijemePocetka) : termin.vrijemePocetka != null)
+        if (!Objects.equals(vrijemePocetka, termin.vrijemePocetka))
             return false;
-        if (vrijemeZavrsetka != null ? !vrijemeZavrsetka.equals(termin.vrijemeZavrsetka) : termin.vrijemeZavrsetka != null)
+        if (!Objects.equals(vrijemeZavrsetka, termin.vrijemeZavrsetka))
             return false;
-        if (lokacija != null ? !lokacija.equals(termin.lokacija) : termin.lokacija != null) return false;
-
-        return true;
+        return Objects.equals(lokacija, termin.lokacija);
     }
 
     @Override

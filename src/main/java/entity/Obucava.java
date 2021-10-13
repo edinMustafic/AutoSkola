@@ -39,9 +39,7 @@ public class Obucava {
         Obucava obucava = (Obucava) o;
 
         if (jmbgInstruktor != obucava.jmbgInstruktor) return false;
-        if (tipKategorija != obucava.tipKategorija) return false;
-
-        return true;
+        return tipKategorija == obucava.tipKategorija;
     }
 
     @Override

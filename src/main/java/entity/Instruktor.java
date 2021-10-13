@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
 public class Instruktor {
@@ -171,26 +172,24 @@ public class Instruktor {
         Instruktor that = (Instruktor) o;
 
         if (Double.compare(that.plata, plata) != 0) return false;
-        if (jmbg != null ? !jmbg.equals(that.jmbg) : that.jmbg != null) return false;
-        if (ime != null ? !ime.equals(that.ime) : that.ime != null) return false;
-        if (imeOca != null ? !imeOca.equals(that.imeOca) : that.imeOca != null) return false;
-        if (prezime != null ? !prezime.equals(that.prezime) : that.prezime != null) return false;
-        if (datumRodjenja != null ? !datumRodjenja.equals(that.datumRodjenja) : that.datumRodjenja != null)
+        if (!Objects.equals(jmbg, that.jmbg)) return false;
+        if (!Objects.equals(ime, that.ime)) return false;
+        if (!Objects.equals(imeOca, that.imeOca)) return false;
+        if (!Objects.equals(prezime, that.prezime)) return false;
+        if (!Objects.equals(datumRodjenja, that.datumRodjenja))
             return false;
-        if (mjestoRodjenja != null ? !mjestoRodjenja.equals(that.mjestoRodjenja) : that.mjestoRodjenja != null)
+        if (!Objects.equals(mjestoRodjenja, that.mjestoRodjenja))
             return false;
-        if (mjestoStanovanja != null ? !mjestoStanovanja.equals(that.mjestoStanovanja) : that.mjestoStanovanja != null)
+        if (!Objects.equals(mjestoStanovanja, that.mjestoStanovanja))
             return false;
-        if (adresa != null ? !adresa.equals(that.adresa) : that.adresa != null) return false;
-        if (brojTelefona != null ? !brojTelefona.equals(that.brojTelefona) : that.brojTelefona != null) return false;
-        if (brojLicneKarte != null ? !brojLicneKarte.equals(that.brojLicneKarte) : that.brojLicneKarte != null)
+        if (!Objects.equals(adresa, that.adresa)) return false;
+        if (!Objects.equals(brojTelefona, that.brojTelefona)) return false;
+        if (!Objects.equals(brojLicneKarte, that.brojLicneKarte))
             return false;
-        if (zaposlenOd != null ? !zaposlenOd.equals(that.zaposlenOd) : that.zaposlenOd != null) return false;
-        if (brojObucenihKandidata != null ? !brojObucenihKandidata.equals(that.brojObucenihKandidata) : that.brojObucenihKandidata != null)
+        if (!Objects.equals(zaposlenOd, that.zaposlenOd)) return false;
+        if (!Objects.equals(brojObucenihKandidata, that.brojObucenihKandidata))
             return false;
-        if (slika != null ? !slika.equals(that.slika) : that.slika != null) return false;
-
-        return true;
+        return Objects.equals(slika, that.slika);
     }
 
     @Override

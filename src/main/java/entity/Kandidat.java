@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
 public class Kandidat {
@@ -349,57 +350,54 @@ public class Kandidat {
         if (brojIzlazakaPropisi != kandidat.brojIzlazakaPropisi) return false;
         if (brojIzlazakaPrvaPomoc != kandidat.brojIzlazakaPrvaPomoc) return false;
         if (brojIzlazakaVoznja != kandidat.brojIzlazakaVoznja) return false;
-        if (jmbg != null ? !jmbg.equals(kandidat.jmbg) : kandidat.jmbg != null) return false;
-        if (ime != null ? !ime.equals(kandidat.ime) : kandidat.ime != null) return false;
-        if (imeOca != null ? !imeOca.equals(kandidat.imeOca) : kandidat.imeOca != null) return false;
-        if (prezime != null ? !prezime.equals(kandidat.prezime) : kandidat.prezime != null) return false;
-        if (datumRodjenja != null ? !datumRodjenja.equals(kandidat.datumRodjenja) : kandidat.datumRodjenja != null)
+        if (!Objects.equals(jmbg, kandidat.jmbg)) return false;
+        if (!Objects.equals(ime, kandidat.ime)) return false;
+        if (!Objects.equals(imeOca, kandidat.imeOca)) return false;
+        if (!Objects.equals(prezime, kandidat.prezime)) return false;
+        if (!Objects.equals(datumRodjenja, kandidat.datumRodjenja))
             return false;
-        if (mjestoRodjenja != null ? !mjestoRodjenja.equals(kandidat.mjestoRodjenja) : kandidat.mjestoRodjenja != null)
+        if (!Objects.equals(mjestoRodjenja, kandidat.mjestoRodjenja))
             return false;
-        if (mjestoStanovanja != null ? !mjestoStanovanja.equals(kandidat.mjestoStanovanja) : kandidat.mjestoStanovanja != null)
+        if (!Objects.equals(mjestoStanovanja, kandidat.mjestoStanovanja))
             return false;
-        if (adresa != null ? !adresa.equals(kandidat.adresa) : kandidat.adresa != null) return false;
-        if (brojTelefona != null ? !brojTelefona.equals(kandidat.brojTelefona) : kandidat.brojTelefona != null)
+        if (!Objects.equals(adresa, kandidat.adresa)) return false;
+        if (!Objects.equals(brojTelefona, kandidat.brojTelefona))
             return false;
-        if (brojLicneKarte != null ? !brojLicneKarte.equals(kandidat.brojLicneKarte) : kandidat.brojLicneKarte != null)
+        if (!Objects.equals(brojLicneKarte, kandidat.brojLicneKarte))
             return false;
-        if (brojKnjiziceKandidata != null ? !brojKnjiziceKandidata.equals(kandidat.brojKnjiziceKandidata) : kandidat.brojKnjiziceKandidata != null)
+        if (!Objects.equals(brojKnjiziceKandidata, kandidat.brojKnjiziceKandidata))
             return false;
-        if (brojFiskalnogRacuna != null ? !brojFiskalnogRacuna.equals(kandidat.brojFiskalnogRacuna) : kandidat.brojFiskalnogRacuna != null)
+        if (!Objects.equals(brojFiskalnogRacuna, kandidat.brojFiskalnogRacuna))
             return false;
-        if (brojLjekarskogUvjerenja != null ? !brojLjekarskogUvjerenja.equals(kandidat.brojLjekarskogUvjerenja) : kandidat.brojLjekarskogUvjerenja != null)
+        if (!Objects.equals(brojLjekarskogUvjerenja, kandidat.brojLjekarskogUvjerenja))
             return false;
-        if (ustanovaLjekarsko != null ? !ustanovaLjekarsko.equals(kandidat.ustanovaLjekarsko) : kandidat.ustanovaLjekarsko != null)
+        if (!Objects.equals(ustanovaLjekarsko, kandidat.ustanovaLjekarsko))
             return false;
-        if (datumIzdavanjaLjekarskog != null ? !datumIzdavanjaLjekarskog.equals(kandidat.datumIzdavanjaLjekarskog) : kandidat.datumIzdavanjaLjekarskog != null)
+        if (!Objects.equals(datumIzdavanjaLjekarskog, kandidat.datumIzdavanjaLjekarskog))
             return false;
-        if (brojPotvrdePropisi != null ? !brojPotvrdePropisi.equals(kandidat.brojPotvrdePropisi) : kandidat.brojPotvrdePropisi != null)
+        if (!Objects.equals(brojPotvrdePropisi, kandidat.brojPotvrdePropisi))
             return false;
-        if (datumPotvrdePropisi != null ? !datumPotvrdePropisi.equals(kandidat.datumPotvrdePropisi) : kandidat.datumPotvrdePropisi != null)
+        if (!Objects.equals(datumPotvrdePropisi, kandidat.datumPotvrdePropisi))
             return false;
-        if (brojPotvrdePrvaPomoc != null ? !brojPotvrdePrvaPomoc.equals(kandidat.brojPotvrdePrvaPomoc) : kandidat.brojPotvrdePrvaPomoc != null)
+        if (!Objects.equals(brojPotvrdePrvaPomoc, kandidat.brojPotvrdePrvaPomoc))
             return false;
-        if (datumPotvrdePrvaPomoc != null ? !datumPotvrdePrvaPomoc.equals(kandidat.datumPotvrdePrvaPomoc) : kandidat.datumPotvrdePrvaPomoc != null)
+        if (!Objects.equals(datumPotvrdePrvaPomoc, kandidat.datumPotvrdePrvaPomoc))
             return false;
-        if (brojPotvrdeVoznja != null ? !brojPotvrdeVoznja.equals(kandidat.brojPotvrdeVoznja) : kandidat.brojPotvrdeVoznja != null)
+        if (!Objects.equals(brojPotvrdeVoznja, kandidat.brojPotvrdeVoznja))
             return false;
-        if (datumPotvrdeVoznja != null ? !datumPotvrdeVoznja.equals(kandidat.datumPotvrdeVoznja) : kandidat.datumPotvrdeVoznja != null)
+        if (!Objects.equals(datumPotvrdeVoznja, kandidat.datumPotvrdeVoznja))
             return false;
-        if (grupaZaTeoretskuNastavu != null ? !grupaZaTeoretskuNastavu.equals(kandidat.grupaZaTeoretskuNastavu) : kandidat.grupaZaTeoretskuNastavu != null)
+        if (!Objects.equals(grupaZaTeoretskuNastavu, kandidat.grupaZaTeoretskuNastavu))
             return false;
-        if (odslusanihCasovaVoznje != null ? !odslusanihCasovaVoznje.equals(kandidat.odslusanihCasovaVoznje) : kandidat.odslusanihCasovaVoznje != null)
+        if (!Objects.equals(odslusanihCasovaVoznje, kandidat.odslusanihCasovaVoznje))
             return false;
-        if (trebaPlatiti != null ? !trebaPlatiti.equals(kandidat.trebaPlatiti) : kandidat.trebaPlatiti != null)
+        if (!Objects.equals(trebaPlatiti, kandidat.trebaPlatiti))
             return false;
-        if (doSadPlatio != null ? !doSadPlatio.equals(kandidat.doSadPlatio) : kandidat.doSadPlatio != null)
+        if (!Objects.equals(doSadPlatio, kandidat.doSadPlatio))
             return false;
-        if (instruktorJmbg != null ? !instruktorJmbg.equals(kandidat.instruktorJmbg) : kandidat.instruktorJmbg != null)
+        if (!Objects.equals(instruktorJmbg, kandidat.instruktorJmbg))
             return false;
-        if (kategorijaTip != null ? !kategorijaTip.equals(kandidat.kategorijaTip) : kandidat.kategorijaTip != null)
-            return false;
-
-        return true;
+        return Objects.equals(kategorijaTip, kandidat.kategorijaTip);
     }
 
     @Override

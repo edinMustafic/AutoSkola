@@ -13,11 +13,10 @@
         <class>entity.Termin</class>
         <class>entity.Obucava</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mysql://34.65.71.216:3306/AutoSkola"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11444178"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.connection.user" value="root"/>
-            <property name="hibernate.connection.password" value="testdatabase"/>
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.connection.user" value="sql11444178"/>
+            <property name="hibernate.connection.password" value="cdJN9G4WLn"/>
         </properties>
     </persistence-unit>
 </persistence>

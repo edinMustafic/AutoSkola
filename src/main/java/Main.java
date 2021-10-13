@@ -1,13 +1,28 @@
 import entity.Admin;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import java.util.Objects;
 
-public class Main
+public class Main extends Application
 {
-    public static void main(String[] args)
+    @Override
+    public void start(Stage stage) throws Exception
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/home.fxml")));
+        stage.setTitle("Home page");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+    public static void main(String[] args)
+    {EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
 
@@ -15,15 +30,12 @@ public class Main
         {
             transaction.begin();
 
-            TypedQuery<String> query = entityManager.createQuery(
-                    "SELECT a.username FROM Admin AS a", String.class);
-            List<String> results = query.getResultList();
-
-            System.out.println(results.get(0));
-
+            Admin admin = new Admin();
+            admin.setUsername("addD");
+            admin.setPassword("aDDD");
+            entityManager.persist(admin);
             transaction.commit();
-        }
-        finally
+        } finally
         {
             if (transaction.isActive())
             {
@@ -32,5 +44,7 @@ public class Main
             entityManager.close();
             entityManagerFactory.close();
         }
+        launch(args);
+
     }
 }

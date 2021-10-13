@@ -36,9 +36,7 @@ public class ObucavaPK implements Serializable {
         ObucavaPK obucavaPK = (ObucavaPK) o;
 
         if (jmbgInstruktor != obucavaPK.jmbgInstruktor) return false;
-        if (tipKategorija != obucavaPK.tipKategorija) return false;
-
-        return true;
+        return tipKategorija == obucavaPK.tipKategorija;
     }
 
     @Override
