@@ -1,0 +1,54 @@
+.backgroundColor
+{
+    -fx-background-image: url('background.jpg');
+    -fx-background-size: cover;
+}
+
+.box
+{
+    -fx-effect: dropshadow(three-pass-box, rgba(122,122,122,0.8), 10, 0, 0, 0);
+    -fx-background-color: rgba(215, 218, 219,0.7);
+    -fx-background-radius: 30;
+}
+
+.text-field
+{
+    -fx-background-color: #d7dadb;
+    -fx-background-radius: 30;
+    -fx-prompt-text-fill: gray;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+}
+
+.button
+{
+    -fx-background-color: #314e8d;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 30;
+}
+
+.button:hover
+{
+    -fx-effect: dropshadow(three-pass-box, rgba(122,122,122,0.8), 10, 0, 0, 0);
+    -fx-background-color: white;
+    -fx-text-fill: #314e8d;
+}
+
+.button:pressed
+{
+    -fx-effect: dropshadow(three-pass-box, rgba(122,122,122,0.8), 10, 0, 0, 0);
+    -fx-background-color: #314e8d;
+    -fx-text-fill: white;
+}
+
+.label
+{
+    -fx-effect: dropshadow(three-pass-box, rgba(122,122,122,0.8), 10, 0, 0, 0);
+    -fx-background-color: rgba(215, 218, 219,0.7);
+    -fx-background-radius: 30;
+    -fx-text-fill: #314e8d;
+    -fx-font-weight: bold;
+    -fx-font-size: 55;
+}

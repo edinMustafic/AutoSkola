@@ -1,4 +1,3 @@
-import entity.Admin;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,13 +15,14 @@ public class Main extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/home.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/logIn.fxml")));
         stage.setTitle("Home page");
         stage.setScene(new Scene(root));
         stage.show();
     }
     public static void main(String[] args)
-    {EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+    {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
 
@@ -30,10 +30,10 @@ public class Main extends Application
         {
             transaction.begin();
 
-            Admin admin = new Admin();
+            /*Admin admin = new Admin();
             admin.setUsername("addD");
             admin.setPassword("aDDD");
-            entityManager.persist(admin);
+            entityManager.persist(admin);*/
             transaction.commit();
         } finally
         {
