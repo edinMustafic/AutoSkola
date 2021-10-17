@@ -1,15 +1,19 @@
-package controllers;
-
 import entity.Admin;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import javax.persistence.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LogInController implements Initializable
@@ -53,13 +57,23 @@ public class LogInController implements Initializable
         }
     }
 
-    public void LogInButtonPressed()
+    public void LogInButtonPressed() throws IOException
     {
         for (Admin admin : admins)
         {
             if (admin.getUsername().equals(usernameTextField.getText()) && admins.get(0).getPassword().equals(passwordTextField.getText()))
             {
+                Stage newStage = new Stage();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("fxml/home.fxml"));
+                Parent root = loader.load();
+                newStage.setTitle("Home page");
+                newStage.setScene(new Scene(root));
+                newStage.show();
                 System.out.println("Login successful: " + admin.getUsername() + " " + admins.get(0).getPassword());
+                Stage currentStage = (Stage)logInButton.getScene().getWindow();
+                currentStage.close();
             } else
             {
                 System.out.println("Login failed");

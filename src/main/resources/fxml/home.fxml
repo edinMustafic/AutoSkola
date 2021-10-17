@@ -1,27 +1,238 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="1200.0" minHeight="600.0" minWidth="1200.0" prefHeight="600.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../css/text.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LogInController">
-   <AnchorPane layoutX="58.0" layoutY="14.0" prefHeight="100.0" prefWidth="1100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
-      <children>
-         <Label accessibleRole="PARENT" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="18.0" prefHeight="65.0" prefWidth="1000.0" text="AUTO SKOLA TREF" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="18.0">
-            <font>
-               <Font size="53.0" />
-            </font>
-         </Label>
-      </children>
-   </AnchorPane>
-   <AnchorPane layoutX="50.0" layoutY="200.0" prefHeight="209.0" prefWidth="1100.0" styleClass="box" stylesheets="@../css/text.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="200.0">
-      <children>
-         <TextField accessibleRole="PARENT" layoutX="76.0" layoutY="35.0" prefHeight="35.0" prefWidth="1066.0" promptText="Username" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0" />
-         <PasswordField layoutX="50.0" layoutY="81.0" prefHeight="35.0" prefWidth="1066.0" promptText="Password" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="75.0" />
-         <Button accessibleRole="PARENT" layoutX="50.0" layoutY="125.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="1000.0" text="Log In" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-      </children>
-   </AnchorPane>
+<AnchorPane maxHeight="700.0" maxWidth="1350.0" minHeight="700.0" minWidth="1350.0" prefHeight="700.0" prefWidth="1350.0" stylesheets="@../css/text.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
+   <children>
+      <ToolBar layoutX="10.0" layoutY="14.0" prefHeight="44.0" prefWidth="634.0" stylesheets="@../css/text.css" AnchorPane.topAnchor="14.0">
+        <items>
+            <Button fx:id="kandidatiButton" accessibleRole="PARENT" mnemonicParsing="false" onAction="#OnKandidatiButtonPressed" prefHeight="40.0" prefWidth="204.0" styleClass="tool-barButton" stylesheets="@../css/text.css" text="Kandidati">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../css/users.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="dokumentiButton" accessibleRole="PARENT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#OnDokumentiButtonPressed" prefHeight="40.0" prefWidth="204.0" styleClass="tool-barButton" stylesheets="@../css/text.css" text="Dokumenti">
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../css/document.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="planerButton" accessibleRole="PARENT" layoutX="218.0" layoutY="10.0" mnemonicParsing="false" onAction="#OnPlanerButtonPressed" prefHeight="40.0" prefWidth="204.0" styleClass="tool-barButton" stylesheets="@../css/text.css" text="Planer">
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../css/calendar.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+        </items>
+      </ToolBar>
+      <AnchorPane fx:id="kandidatiAnchorPane" prefHeight="610.0" prefWidth="1272.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="325.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+               <children>
+                  <ImageView fitHeight="66.0" fitWidth="69.0" layoutX="30.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0">
+                     <image>
+                        <Image url="@../css/users.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="105.0" layoutY="31.0" styleClass="normalLabel" stylesheets="@../css/text.css" text="KANDIDATI" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="85.0" mnemonicParsing="false" prefWidth="331.0" styleClass="buttonForStack" stylesheets="@../css/text.css" text="Trenutno aktivni: 100" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="125.0" mnemonicParsing="false" prefWidth="353.0" styleClass="buttonForStack" stylesheets="@../css/text.css" text="Cekaju ljekarsko: 100" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="125.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="165.0" mnemonicParsing="false" prefWidth="353.0" styleClass="buttonForStack" stylesheets="@../css/text.css" text="Cekaju polaganje p.pomoci: 100" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="165.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="210.0" mnemonicParsing="false" prefWidth="353.0" styleClass="buttonForStack" stylesheets="@../css/text.css" text="Cekaju polaganje testova: 100" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="210.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="255.0" mnemonicParsing="false" prefWidth="353.0" styleClass="buttonForStack" stylesheets="@../css/text.css" text="Cekaju polaganje voznje: 100" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="300.0" mnemonicParsing="false" prefWidth="353.0" styleClass="buttonForStack" stylesheets="@../css/text.css" text="Pohadjaju teo. nastavu: 100" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="300.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="345.0" mnemonicParsing="false" prefWidth="353.0" styleClass="buttonForStack" stylesheets="@../css/text.css" text="Pohadjaju prvu pomoc: 100" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="345.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="390.0" mnemonicParsing="false" prefWidth="353.0" styleClass="buttonForStack" stylesheets="@../css/text.css" text="Pohadjaju voznju: 100" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="390.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="339.0" layoutY="5.0" prefHeight="85.0" prefWidth="939.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+               <children>
+                  <TextField fx:id="jmbgTextField" layoutX="7.0" layoutY="43.0" prefHeight="39.0" prefWidth="824.0" promptText="JMBG kandidata" AnchorPane.bottomAnchor="5.0" />
+                  <Button fx:id="searchButton" layoutX="839.0" layoutY="45.0" mnemonicParsing="false" onAction="#OnSearchButtonClicked" prefHeight="36.0" prefWidth="137.0" styleClass="searchButton" stylesheets="@../css/text.css" text="PRETRAZI" AnchorPane.bottomAnchor="5.0">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../css/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <RadioButton layoutX="131.0" layoutY="12.0" mnemonicParsing="false" text="JMBG" visible="false" />
+                  <RadioButton layoutX="251.0" layoutY="12.0" mnemonicParsing="false" text="Ime i prezime" visible="false" />
+                  <RadioButton layoutX="390.0" layoutY="12.0" mnemonicParsing="false" text="Datum polaganja" visible="false" />
+                  <Label layoutX="17.0" layoutY="8.0" prefHeight="25.0" prefWidth="100.0" styleClass="searchLabel" stylesheets="@../css/text.css" text="PRETRAGA:" />
+                  <TextField fx:id="imeTextField" layoutX="17.0" layoutY="44.0" prefHeight="39.0" prefWidth="393.0" promptText="Ime kandidata" visible="false" AnchorPane.bottomAnchor="5.0" />
+                  <TextField fx:id="prezimeTextField" layoutX="419.0" layoutY="44.0" prefHeight="39.0" prefWidth="393.0" promptText="Prezime kandidata" visible="false" AnchorPane.bottomAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="kandidatProfileAnchorPane" layoutX="339.0" layoutY="90.0" prefHeight="515.0" prefWidth="939.0" styleClass="anchorProfile" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0">
+                     <image>
+                        <Image url="@../css/person.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="imeImeOcaPrezime" layoutX="340.0" layoutY="10.0" styleClass="profileLabelName" stylesheets="@../css/text.css" text="Ime (Ime oca) Prezime" />
+                  <Label fx:id="jmbg" layoutX="164.0" layoutY="48.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="JMBG: 123456789012" />
+                  <Label fx:id="brojLK" layoutX="164.0" layoutY="73.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj LK: 1234567890" />
+                  <Label fx:id="brojTelefona" layoutX="164.0" layoutY="98.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj telefona: 061123456" />
+                  <Label fx:id="brojKnjizice" layoutX="164.0" layoutY="123.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj knjizice: 12345678901" />
+                  <Label fx:id="datumRodjenja" layoutX="509.0" layoutY="48.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Datum rodjenja: xx.xx.xxxx." />
+                  <Label fx:id="mjestoRodjenja" layoutX="509.0" layoutY="73.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Mjesto rodjenja: nazivMjesta" />
+                  <Label fx:id="mjestoStanovanja" layoutX="509.0" layoutY="98.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Mjesto stanovanja: nazivMjesta" />
+                  <Label fx:id="adresa" layoutX="509.0" layoutY="123.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Adresa: ulica, XX" />
+                  <AnchorPane layoutX="5.0" layoutY="285.0" prefHeight="108.0" prefWidth="287.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="285.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabelTitle" stylesheets="@../css/text.css" text="Ljekarsko uvjerenje:" />
+                        <Label fx:id="brojLjekarskog" layoutY="25.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj: xxx-xx-xx" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0" />
+                        <Label fx:id="ustanovaLjekarskog" layoutX="5.0" layoutY="50.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Ustanova: imeUstanove" />
+                        <Label fx:id="datumLjekarskog" layoutX="5.0" layoutY="75.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Datum: xx.xx.xxxx." />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="5.0" layoutY="340.0" prefHeight="108.0" prefWidth="287.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="-1.0" layoutY="2.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabelTitle" stylesheets="@../css/text.css" text="Prva pomoc:" />
+                        <Label fx:id="brojPotvrdePrvaPomoc" layoutX="9.0" layoutY="27.0" prefHeight="25.0" prefWidth="277.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj potvr: xx-xxx/xxxx" AnchorPane.leftAnchor="5.0" />
+                        <Label fx:id="datumPotvrdePrvaPomoc" layoutX="5.0" layoutY="52.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Datum: xx.xx.xxxx." AnchorPane.leftAnchor="5.0" />
+                        <Label fx:id="brojIzlazakaPrvaPomoc" layoutX="5.0" layoutY="77.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj izlazaka: x" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="299.0" layoutY="168.0" prefHeight="225.0" prefWidth="325.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="299.0" AnchorPane.topAnchor="168.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabelTitle" stylesheets="@../css/text.css" text="Propisi:" />
+                        <Label fx:id="grupaPropisi" layoutX="8.0" layoutY="25.0" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Grupa: xx/xxxx" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Label fx:id="brojIzlazakaPropisi" layoutX="5.0" layoutY="50.0" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj izlazaka: x" />
+                        <Label fx:id="brojPotvrdePropisi" layoutX="5.0" layoutY="75.0" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj potvrde: x-xxxx/xxxx" />
+                        <Label fx:id="datumPotvrdePropisi" layoutX="5.0" layoutY="100.0" prefHeight="25.0" prefWidth="315.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Datum potvrde: xx.xx.xxxx." />
+                        <Label fx:id="brojRacunaPropisi" layoutX="5.0" layoutY="125.0" prefHeight="25.0" prefWidth="315.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj racuna: xxxx" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="634.0" layoutY="166.0" prefHeight="225.0" prefWidth="355.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="630.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="168.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="381.0" styleClass="profileLabelTitle" stylesheets="@../css/text.css" text="Voznja:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Label fx:id="odslusanihCasovaVoznja" layoutX="5.0" layoutY="25.0" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Odslusanih casova: xx" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Label fx:id="brojIzlazakaVoznja" layoutX="5.0" layoutY="50.0" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj izlazaka: x" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Label fx:id="instruktorVoznja" layoutX="5.0" layoutY="75.0" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Instruktor: ime prezime" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Label fx:id="brojPotvrdeVoznja" layoutX="5.0" layoutY="100.0" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj potvrde: xxx/xxxx" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Label fx:id="datumPotvrdeVoznja" layoutX="5.0" layoutY="125.0" prefHeight="25.0" prefWidth="306.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Datum potvrde: xx.xx.xxxx." AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Label fx:id="brojRacunaVoznja" layoutX="5.0" layoutY="150.0" prefHeight="25.0" prefWidth="315.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Broj racuna: xxxx" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="5.0" layoutY="168.0" prefHeight="108.0" prefWidth="144.0" styleClass="anchor" stylesheets="@../css/text.css">
+                     <children>
+                        <Label alignment="CENTER" layoutY="13.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabelTitle" stylesheets="@../css/text.css" text="Kategorija:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0" />
+                        <Label fx:id="kategorija" alignment="CENTER" layoutY="25.0" prefHeight="79.0" prefWidth="270.0" styleClass="profileCategory" stylesheets="@../css/text.css" text="B" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="156.0" layoutY="168.0" prefHeight="108.0" prefWidth="137.0" styleClass="anchor" stylesheets="@../css/text.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabelTitle" stylesheets="@../css/text.css" text="Polozio:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0" />
+                        <Label fx:id="polozio" alignment="CENTER" layoutY="25.0" prefHeight="79.0" prefWidth="270.0" styleClass="profileCategory" stylesheets="@../css/text.css" text="NE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="299.0" layoutY="402.0" prefHeight="108.0" prefWidth="325.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="5.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="-1.0" layoutY="2.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabelTitle" stylesheets="@../css/text.css" text="Dugovanja:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Label fx:id="ukupnaCijena" layoutX="9.0" layoutY="27.0" prefHeight="25.0" prefWidth="277.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Ukupna cijena: xxxx" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Label fx:id="platio" layoutX="5.0" layoutY="52.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Platio: xxxx" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Label fx:id="duguje" layoutX="5.0" layoutY="77.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabel" stylesheets="@../css/text.css" text="Duguje: xxxx" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="630.0" layoutY="402.0" prefHeight="108.0" prefWidth="355.0" styleClass="anchor" stylesheets="@../css/text.css">
+                     <children>
+                        <Label alignment="CENTER" layoutX="-1.0" layoutY="2.0" prefHeight="25.0" prefWidth="270.0" styleClass="profileLabelTitle" stylesheets="@../css/text.css" text="Opcije:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Button fx:id="urediKandidata" layoutX="22.0" layoutY="38.0" mnemonicParsing="false" text="Uredi" AnchorPane.leftAnchor="25.0" />
+                        <Button fx:id="izbrisiKandidata" layoutX="186.0" layoutY="38.0" mnemonicParsing="false" styleClass="deleteButton" stylesheets="@../css/text.css" text="Izbrisi" AnchorPane.rightAnchor="25.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="dokumentiAnchorPane" layoutX="-58.0" layoutY="-631.0" prefHeight="600.0" prefWidth="1272.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="721.0" AnchorPane.leftAnchor="-58.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="-631.0">
+         <children>
+            <Label text="Dokumenti" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="planerAnchorPane" layoutX="-19.0" layoutY="725.0" prefHeight="600.0" prefWidth="1272.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="-635.0" AnchorPane.leftAnchor="-19.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="725.0">
+         <children>
+            <Label text="Planer" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

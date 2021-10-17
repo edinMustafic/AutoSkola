@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="1200.0" minHeight="600.0" minWidth="1200.0" prefHeight="600.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../css/text.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LogInController">
+<AnchorPane maxHeight="600.0" maxWidth="1200.0" minHeight="600.0" minWidth="1200.0" prefHeight="600.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../css/text.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LogInController">
    <AnchorPane layoutX="58.0" layoutY="14.0" prefHeight="100.0" prefWidth="1100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
       <children>
          <Label accessibleRole="PARENT" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="18.0" prefHeight="65.0" prefWidth="1000.0" text="AUTO SKOLA TREF" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="18.0">

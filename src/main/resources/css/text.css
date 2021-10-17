@@ -1,4 +1,4 @@
-.backgroundColor
+.root
 {
     -fx-background-image: url('background.jpg');
     -fx-background-size: cover;
@@ -52,3 +52,125 @@
     -fx-font-weight: bold;
     -fx-font-size: 55;
 }
+
+.tool-bar
+{
+    -fx-background-color: rgba(122,122,122,0.5);
+    -fx-background-radius: 20;
+}
+
+.tool-barButton
+{
+    -fx-background-color: #314e8d;
+    -fx-background-radius: 20;
+    -fx-text-fill: #d7dadb;
+    -fx-font-size: 15;
+    -fx-font-weight: normal;
+}
+
+.tool-barButton:hover
+{
+    -fx-background-color: rgba(153, 210, 224);
+    -fx-background-radius: 20;
+    -fx-text-fill: #314e8d;
+    -fx-font-weight: bold;
+}
+
+.tool-barButton:focused
+{
+    -fx-background-color: rgba(153, 210, 224);
+    -fx-background-radius: 20;
+    -fx-text-fill: #314e8d;
+    -fx-font-weight: bold;
+}
+
+.normalLabel
+{
+    -fx-background-color: none;
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+}
+
+.searchLabel
+{
+    -fx-background-color: none;
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+.profileLabel
+{
+    -fx-background-color: none;
+    -fx-font-size: 20;
+    -fx-text-fill: #314e8d;
+}
+
+.profileLabelName
+{
+    -fx-background-color: none;
+    -fx-font-size: 25;
+    -fx-text-fill: #e83c3c;
+}
+
+.profileLabelTitle
+{
+    -fx-background-color: none;
+    -fx-font-size: 20;
+    -fx-text-fill: #e83c3c;
+}
+
+.profileCategory
+{
+    -fx-background-color: none;
+    -fx-font-size: 50;
+    -fx-text-fill: #e83c3c;
+}
+
+.searchButton
+{
+    -fx-background-color: #314e8d;
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+    -fx-background-radius: 1000;
+}
+
+.buttonForStack
+{
+    -fx-background-color: #d7dadb;
+    -fx-text-fill: #314e8d;
+    -fx-background-radius: 10;
+    -fx-font-size: 20;
+    -fx-font-weight: normal;
+    -fx-text-alignment: center;
+}
+
+.deleteButton
+{
+    -fx-background-color: #e83c3c;
+    -fx-text-fill: white;
+}
+
+.deleteButton:hover
+{
+    -fx-background-color: #d7dadb;
+    -fx-text-fill: #e83c3c;
+}
+
+.deleteButton:pressed
+{
+    -fx-background-color: #e83c3c;
+    -fx-text-fill: white;
+}
+
+.anchor
+{
+    -fx-background-color: rgba(122,122,122,0.5);
+    -fx-background-radius: 20;
+}
+
+.anchorProfile
+{
+    -fx-background-color: #d7dadb;
+    -fx-background-radius: 20;
+}
+
