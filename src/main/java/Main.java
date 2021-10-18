@@ -29,43 +29,6 @@ public class Main extends Application
     }
     public static void main(String[] args)
     {
-        Workbook wb = new HSSFWorkbook();
-        Sheet sheet1 = wb.createSheet("test");
-        Row row1 = sheet1.createRow(0);
-        row1.createCell(0).setCellValue("Header1");
-        row1.createCell(0).setCellValue("Header2");
-        row1.createCell(0).setCellValue("Header3");
-        try
-        {
-            wb.write(new FileOutputStream("ExcelSample.xlsx"));
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-
-        try
-        {
-            transaction.begin();
-
-            /*Admin admin = new Admin();
-            admin.setUsername("addD");
-            admin.setPassword("aDDD");
-            entityManager.persist(admin);*/
-            transaction.commit();
-        } finally
-        {
-            if (transaction.isActive())
-            {
-                transaction.rollback();
-            }
-            entityManager.close();
-            entityManagerFactory.close();
-        }
         launch(args);
-
     }
 }

@@ -1,3 +1,4 @@
+import com.itextpdf.text.DocumentException;
 import entity.Kandidat;
 import entity.Kategorija;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import javax.persistence.*;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -98,6 +100,8 @@ public class HomeController implements Initializable
     public Button urediKandidata;
     @FXML
     public Button izbrisiKandidata;
+    @FXML
+    public Button tabelaButton;
 
     private Kandidat searchedKandidat;
 
@@ -285,5 +289,11 @@ public class HomeController implements Initializable
         platio.setText("Platio: " + (searchedKandidat.getDoSadPlatio() == null ? "-" : searchedKandidat.getDoSadPlatio()));
         duguje.setText("Duguje " + (kat == null ? "-" : (kat.getBrojCasovaTeorija()*kat.getCijenaCasaTeorija()+kat.getBrojCasovaVoznja()*kat.getCijenaCasaVoznja()) - (searchedKandidat.getDoSadPlatio() == null ? 0 : searchedKandidat.getDoSadPlatio())));
     }
+
+    public void CreateTable() throws DocumentException, FileNotFoundException
+    {
+        DokumentiController.CreatePDF();
+    }
+
 
 }

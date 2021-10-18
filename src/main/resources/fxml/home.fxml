@@ -44,7 +44,7 @@
             </Button>
         </items>
       </ToolBar>
-      <AnchorPane fx:id="kandidatiAnchorPane" prefHeight="610.0" prefWidth="1272.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+      <AnchorPane fx:id="kandidatiAnchorPane" prefHeight="610.0" prefWidth="1272.0" styleClass="anchor" stylesheets="@../css/text.css" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
          <children>
             <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="325.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                <children>
@@ -224,9 +224,10 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dokumentiAnchorPane" layoutX="-58.0" layoutY="-631.0" prefHeight="600.0" prefWidth="1272.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="721.0" AnchorPane.leftAnchor="-58.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="-631.0">
+      <AnchorPane fx:id="dokumentiAnchorPane" layoutX="10.0" layoutY="80.0" prefHeight="600.0" prefWidth="1272.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0">
          <children>
             <Label text="Dokumenti" />
+            <Button fx:id="tabelaButton" layoutX="170.0" layoutY="229.0" mnemonicParsing="false" onAction="#CreateTable" text="Tabela" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="planerAnchorPane" layoutX="-19.0" layoutY="725.0" prefHeight="600.0" prefWidth="1272.0" styleClass="anchor" stylesheets="@../css/text.css" AnchorPane.bottomAnchor="-635.0" AnchorPane.leftAnchor="-19.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="725.0">
