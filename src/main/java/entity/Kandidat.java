@@ -39,6 +39,7 @@ public class Kandidat {
     private Double doSadPlatio;
     private String instruktorJmbg;
     private Integer kategorijaTip;
+    private Integer mjesecPotvrdeVoznja;
 
     @Id
     @Column(name = "JMBG")

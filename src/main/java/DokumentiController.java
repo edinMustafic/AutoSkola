@@ -3,59 +3,61 @@ import com.itextpdf.text.pdf.GrayColor;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.mysql.cj.protocol.ResultsetRowsOwner;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import entity.Kandidat;
+import entity.Kategorija;
 
+import javax.persistence.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.List;
 
 public class DokumentiController
 {
-    public static void CreateSpreadsheet(String title)
-    {
-        Workbook workbook = new HSSFWorkbook();
-        Sheet sheet1 = workbook.createSheet(title);
-        Row row1 = sheet1.createRow(0);
-        row1.createCell(0).setCellValue("Test1");
-        row1.createCell(1).setCellValue("Test2");
-        row1.createCell(2).setCellValue("Test3");
-        Row row2 = sheet1.createRow(1);
-        row1.createCell(0).setCellValue("Test1");
-        row1.createCell(1).setCellValue("Test2");
-        row1.createCell(2).setCellValue("Test3");
-        try
-        {
-            workbook.write(new FileOutputStream("Test.xlsx"));
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void CreatePDF() throws DocumentException, FileNotFoundException
+    public static void CreatePDFTable(List<Kandidat> kandidati, String tip, String mjesec, String godina) throws DocumentException, FileNotFoundException
     {
         Document document = new Document(PageSize.A4, 0,0,0,0);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/edin/Desktop/test.pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream(System.getProperty("user.home") + "/Desktop/Tabela_" + tip + "_" +mjesec + "_" + godina + ".pdf"));
 
         document.open();
 
-        PdfPTable table = new PdfPTable(new float[]{2, 4, 8, 4, 3f, 2.7f, 3.3f, 2, 2.5f});
+        PdfPTable table = new PdfPTable(new float[]{2, 4.2f, 6.5f, 4.2f, 3f, 3.5f, 4f, 2, 2.5f});
         table.setWidthPercentage(100);
         table.setSpacingBefore(0f);
         table.setSpacingAfter(0f);
+        CreateTableHeader(table, tip, mjesec, godina);
+        CreateTableColumns(table);
+        table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.getDefaultCell().setVerticalAlignment(Element.ALIGN_CENTER);
+        table.getDefaultCell().setPadding(7f);
 
-        PdfPCell cell = new PdfPCell(new Phrase("Voznja - Maj 2021", new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, GrayColor.GRAYWHITE)));
+        for (int i = 0; i < kandidati.size(); i++) {
+            table.addCell(Integer.toString(i+1));
+            table.addCell((kandidati.get(i).getDatumPotvrdeVoznja().toLocalDateTime().getDayOfMonth() + "." + kandidati.get(i).getDatumPotvrdeVoznja().toLocalDateTime().getMonth().getValue() + "." + kandidati.get(i).getDatumPotvrdeVoznja().toLocalDateTime().getYear() + "."));
+            table.addCell(kandidati.get(i).getIme() + " " + kandidati.get(0).getPrezime());
+            table.addCell(String.valueOf(kandidati.get(i).getDatumRodjenja().toLocalDateTime().getDayOfMonth() + "." + kandidati.get(i).getDatumRodjenja().toLocalDateTime().getMonth().getValue() + "." + kandidati.get(i).getDatumRodjenja().toLocalDateTime().getYear() + "."));
+            Kategorija kat = GetKategorija(kandidati.get(0));
+            table.addCell(Integer.toString(kat.getBrojCasovaVoznja()));
+            table.addCell(Double.toString(kat.getCijenaCasaVoznja()) + " KM");
+            table.addCell(Double.toString(kat.getCijenaCasaVoznja()*kat.getBrojCasovaVoznja()) + " KM");
+            table.addCell(GetKategorijaLabel(kandidati.get(0).getKategorijaTip()));
+            table.addCell(kandidati.get(i).getBrojFiskalnogRacuna().toString());
+        }
+        document.add(table);
+        document.close();
+    }
+
+    private static void CreateTableHeader(PdfPTable table, String tip, String mjesec, String godina)
+    {
+        PdfPCell cell = new PdfPCell(new Phrase(tip + " - " + mjesec + " " + godina, new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, GrayColor.GRAYWHITE)));
         cell.setColspan(10);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setPadding(10.0f);
         cell.setBackgroundColor(new BaseColor(140, 221, 8));
         table.addCell(cell);
+    }
 
+    private static void CreateTableColumns(PdfPTable table)
+    {
         Font f = new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD, GrayColor.BLACK);
 
         PdfPCell rbCell = new PdfPCell(new Phrase("R.B.", f));
@@ -111,27 +113,78 @@ public class DokumentiController
         frCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         frCell.setBackgroundColor(new BaseColor(222, 222, 222));
         table.addCell(frCell);
-
-        table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-        table.getDefaultCell().setPadding(7f);
-
-        for (int i = 0; i < 100; i++) {
-            table.addCell(Integer.toString(i));
-            table.addCell("xx.xx.xxxx.");
-            table.addCell("nekoIme nekoPrezime" + i);
-            table.addCell("xx.xx.xxxx.");
-            table.addCell("xx");
-            table.addCell("xxKM");
-            table.addCell("xxxKM");
-            table.addCell("B");
-            table.addCell("xxxx");
-        }
-        document.add(table);
-        document.close();
-
-        document.close();
-
     }
 
+    private static Kategorija GetKategorija(Kandidat kandidat)
+    {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        List<Kategorija> resultList;
+
+        try
+        {
+            transaction.begin();
+
+            Query q = entityManager.createQuery("SELECT k FROM Kategorija k WHERE k.tip = :tip");
+            q.setParameter("tip", kandidat.getKategorijaTip());
+            resultList = q.getResultList();
+
+            transaction.commit();
+        } finally
+        {
+            if (transaction.isActive())
+            {
+                transaction.rollback();
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return resultList.get(0);
+    }
+
+    private static String GetKategorijaLabel(int kategorijaTip)
+    {
+        String katLabel = "";
+
+        switch (kategorijaTip)
+        {
+            case 1:
+                katLabel = "A";
+                break;
+            case 2:
+                katLabel = "B";
+                break;
+            case 3:
+                katLabel = "C";
+                break;
+            case 4:
+                katLabel = "C1";
+                break;
+            case 5:
+                katLabel = "CE";
+                break;
+            case 6:
+                katLabel = "C1E";
+                break;
+            case 7:
+                katLabel = "BE";
+                break;
+            case 8:
+                katLabel = "D";
+                break;
+            case 9:
+                katLabel = "DE";
+                break;
+            case 10:
+                katLabel = "A1";
+                break;
+            case 11:
+                katLabel = "D1";
+                break;
+        }
+        return katLabel;
+    }
 
 }

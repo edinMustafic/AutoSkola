@@ -3,14 +3,18 @@ import entity.Kandidat;
 import entity.Kategorija;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 
 import javax.persistence.*;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -101,9 +105,19 @@ public class HomeController implements Initializable
     @FXML
     public Button izbrisiKandidata;
     @FXML
-    public Button tabelaButton;
+    public Button propisiTabelaButton;
+    @FXML
+    public Button voznjaTabelaButton;
+    @FXML
+    public SplitMenuButton mjesecMenuButton;
+    @FXML
+    public SplitMenuButton godinaMenuButton;
+    @FXML
+    public MenuItem januarMenuItem;
 
     private Kandidat searchedKandidat;
+
+    private int year, month;
 
     public void OnKandidatiButtonPressed()
     {
@@ -195,6 +209,35 @@ public class HomeController implements Initializable
         return resultList.get(0);
     }
 
+    private List<Kandidat> GetCandidatesForMonth(String query)
+    {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        List<Kandidat> resultList;
+
+        try
+        {
+            transaction.begin();
+
+            Query q = entityManager.createNativeQuery(query, Kandidat.class);
+            q.setParameter("m", month);
+            resultList = q.getResultList();
+
+            transaction.commit();
+        } finally
+        {
+            if (transaction.isActive())
+            {
+                transaction.rollback();
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return resultList;
+    }
+
     public void OnSearchButtonClicked()
     {
         searchedKandidat = FindCandidate(jmbgTextField.getText());
@@ -211,7 +254,7 @@ public class HomeController implements Initializable
             brojTelefona.setText("Broj telefona: " + searchedKandidat.getBrojTelefona());
             brojKnjizice.setText("Broj knjizice: " + (searchedKandidat.getBrojKnjiziceKandidata() == null ? "-" : searchedKandidat.getBrojKnjiziceKandidata().toString()));
             datumRodjenja.setText("Datum rodjenja: " + searchedKandidat.getDatumRodjenja().toLocalDateTime().getDayOfMonth() + "." + searchedKandidat.getDatumRodjenja().toLocalDateTime().getMonth().getValue() + "." + searchedKandidat.getDatumRodjenja().toLocalDateTime().getYear() + ".");
-            mjestoRodjenja.setText("Mjesto stanovanja: " + (searchedKandidat.getMjestoRodjenja() == null ? "-" : searchedKandidat.getMjestoRodjenja()));
+            mjestoRodjenja.setText("Mjesto rodjenja: " + (searchedKandidat.getMjestoRodjenja() == null ? "-" : searchedKandidat.getMjestoRodjenja()));
             mjestoStanovanja.setText("Mjesto stanovanja: " + (searchedKandidat.getMjestoStanovanja() == null ? "-" : searchedKandidat.getMjestoStanovanja()));
             adresa.setText("Adresa: " + (searchedKandidat.getAdresa() == null ? "-" : searchedKandidat.getAdresa()));
             if (searchedKandidat.getKategorijaTip() == null)
@@ -290,9 +333,103 @@ public class HomeController implements Initializable
         duguje.setText("Duguje " + (kat == null ? "-" : (kat.getBrojCasovaTeorija()*kat.getCijenaCasaTeorija()+kat.getBrojCasovaVoznja()*kat.getCijenaCasaVoznja()) - (searchedKandidat.getDoSadPlatio() == null ? 0 : searchedKandidat.getDoSadPlatio())));
     }
 
-    public void CreateTable() throws DocumentException, FileNotFoundException
+    public void OnPropisiTabelaButtonClicked() throws DocumentException, FileNotFoundException
     {
-        DokumentiController.CreatePDF();
+        List<Kandidat> kandidati = GetCandidatesForMonth("SELECT * FROM Kandidat WHERE MONTH(datumPotvrdePropisi) = :m");
+        DokumentiController.CreatePDFTable(kandidati, "Propisi", mjesecMenuButton.getText(), godinaMenuButton.getText());
+    }
+
+    public void OnVoznjaTabelaButtonClicked() throws DocumentException, FileNotFoundException
+    {
+        List<Kandidat> kandidati = GetCandidatesForMonth("SELECT * FROM Kandidat WHERE MONTH(datumPotvrdeVoznja) = :m");
+        DokumentiController.CreatePDFTable(kandidati, "Voznja", mjesecMenuButton.getText(), godinaMenuButton.getText());
+    }
+
+    public void OnJanuarSelected()
+    {
+        mjesecMenuButton.setText("Januar");
+        month = 1;
+    }
+    public void OnFebruarSelected()
+    {
+        mjesecMenuButton.setText("Februar");
+        month = 2;
+    }
+    public void OnMartSelected()
+    {
+        mjesecMenuButton.setText("Mart");
+        month = 3;
+    }
+    public void OnAprilSelected()
+    {
+        mjesecMenuButton.setText("April");
+        month = 4;
+    }
+    public void OnMajSelected()
+    {
+        mjesecMenuButton.setText("Maj");
+        month = 5;
+    }
+    public void OnJuniSelected()
+    {
+        mjesecMenuButton.setText("Juni");
+        month = 6;
+    }
+    public void OnJuliSelected()
+    {
+        mjesecMenuButton.setText("Juli");
+        month = 7;
+    }
+    public void OnAugustSelected()
+    {
+        mjesecMenuButton.setText("August");
+        month = 8;
+    }
+    public void OnSeptembarSelected()
+    {
+        mjesecMenuButton.setText("Septembar");
+        month = 9;
+    }
+    public void OnOktobarSelected()
+    {
+        mjesecMenuButton.setText("Oktobar");
+        month = 10;
+    }
+    public void OnNovembarSelected()
+    {
+        mjesecMenuButton.setText("Novembar");
+        month = 11;
+    }
+    public void OnDecembarSelected()
+    {
+        mjesecMenuButton.setText("Decembar");
+        month = 12;
+    }
+
+    public void On2017Selected()
+    {
+        godinaMenuButton.setText("2017");
+        year = 2017;
+    }
+    public void On2018Selected()
+    {
+        godinaMenuButton.setText("2018");
+        year = 2018;
+    }
+    public void On2019Selected()
+    {
+        godinaMenuButton.setText("2019");
+        year = 2019;
+    }
+    public void On2020Selected()
+    {
+        godinaMenuButton.setText("2020");
+        year = 2020;
+    }
+    public void On2021Selected()
+    {
+        godinaMenuButton.setText("2021");
+        year = 2021;
     }
 
 

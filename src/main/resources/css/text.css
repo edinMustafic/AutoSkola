@@ -43,7 +43,7 @@
     -fx-text-fill: white;
 }
 
-.label
+.title
 {
     -fx-effect: dropshadow(three-pass-box, rgba(122,122,122,0.8), 10, 0, 0, 0);
     -fx-background-color: rgba(215, 218, 219,0.7);
@@ -51,6 +51,14 @@
     -fx-text-fill: #314e8d;
     -fx-font-weight: bold;
     -fx-font-size: 55;
+}
+
+.label
+{
+    -fx-background-color: rgba(215, 218, 219,0.7);
+    -fx-text-fill: #314e8d;
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
 }
 
 .tool-bar
@@ -174,3 +182,6 @@
     -fx-background-radius: 20;
 }
 
+.split-menu-button
+{
+}
